@@ -26,7 +26,7 @@ st.title('Welcome to EPW Explorer')
 st.header("Upload an EPW weather file to visualise the plots")
 uploaded_epw = st.file_uploader("Upload EPW")
 st.header("Or select an EPW from the list below")
-epw_sel = st.selectbox('Select EPW', epw_files)
+epw_sel = st.selectbox('Select EPW. Then please navigate the app with the menu on the left.', epw_files)
 
 col_names = ['Year','Month','Day','Hour','Seconds','Datasource','DB','DP','RH','AtmPressure','ExtHorzRad','ExtDirRad','HorzIRSky', 'GloHorzRad', 'DirNormRad','DifHorzRad','GloHorzIllum','DirNormIllum','DifHorzIllum','ZenLum','WindDir','WindSpd','TotSkyCvr','OpaqSkyCvr','Visibility','CeilingHgt','PresWeathObs,PresWeathCodes','PrecipWtr','AerosolOptDepth','SnowDepth','DaysLastSnow','Albedo','Rain','RainQuantity','-']
 
