@@ -11,7 +11,7 @@ def lineGraph(df, var1='DB',var2='RH'):
 
     #initiate bokeh figure and tols
     tools=[SaveTool(),'reset','xwheel_zoom']
-    f2=figure(x_range=Range1d(df['dates'][0],df['dates'][8759],bounds="auto"),y_axis_label='Dry-Bulb Temperature (°C)',x_axis_type='datetime',width=950,height=500, tools=tools, active_scroll='xwheel_zoom')
+    f2=figure(x_range=Range1d(df['dates'][0],df['dates'][8759],bounds="auto"),y_axis_label='Dry-Bulb Temperature (°C)',x_axis_type='datetime',width=1050,height=400, tools=tools, active_scroll='xwheel_zoom')
 
     #adjust left axis
     f2.y_range=Range1d(start=df['DB'].min()-2, end=df['DB'].max()+2)

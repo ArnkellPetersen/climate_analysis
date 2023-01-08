@@ -16,18 +16,17 @@ df = st.session_state['df']
 
 if st.session_state['df'] is not None:
     st.header("Hourly Values")
-    st.subheader("Pick your variables")
-    options = ['DB','RH','WB','GloHorzRad']
+    st.subheader("Pick your variables - More options to come..")
+    options = ['DB','RH']
     col1, col2 = st.columns(2)
     with col1:
-        option_l = st.selectbox('Variable for the left axis', options)
+        option_l = st.selectbox('Variable for the left axis', options, index=0)
     with col2:
-        option_r = st.selectbox('Variable for the right axis', options)
+        option_r = st.selectbox('Variable for the right axis', options, index=1)
     with st.container():
-        st.bokeh_chart(lineGraph(df, var1=option_l, var2=option_r), use_container_width=True)
+        st.bokeh_chart(lineGraph(df, var1=option_l, var2=option_r), use_container_width=False)
     with st.container():
         st.header("Histogram 2D")
-        st.subheader("Pick your variables")
-        st.bokeh_chart(histo2D(df), use_container_width=True)
+        st.bokeh_chart(histo2D(df), use_container_width=False)
 else:
     st.header("Upload an EPW weather file to visualise the plots")

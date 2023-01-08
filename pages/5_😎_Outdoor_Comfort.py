@@ -4,7 +4,7 @@ from bokeh_plots.utci import utciHeatmap
 
 st.set_page_config(
    page_title="EPW Explorer - Outdoor Comfort",
-   page_icon="🧭",
+   page_icon="😎",
    layout="wide",
    initial_sidebar_state="expanded",
 )
@@ -15,6 +15,7 @@ df = st.session_state['df']
 if st.session_state['df'] is not None:
     with st.container():
         st.header("Universal Thermal Climate Index (UTCI) Heatmap")
+        st.subheader("This metric shows expected outdoor thermal comfort for each hour of the year")
         st.bokeh_chart(utciHeatmap(df), use_container_width=True)
 else:
     st.header("Upload an EPW weather file to visualise the plots")

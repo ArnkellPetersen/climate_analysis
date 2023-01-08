@@ -16,8 +16,6 @@ if st.session_state['df'] is not None:
     with st.container():
         st.header("Monthly Statistics")
         st.bokeh_chart(monthlyGraph(df), use_container_width=True)
-    with st.container():
-        st.header("Monthly Averages")
 
 else:
     st.header("Upload an EPW weather file to visualise the plots")

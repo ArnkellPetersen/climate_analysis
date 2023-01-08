@@ -19,7 +19,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 if 'df' not in st.session_state:
     st.session_state['df'] = None
     st.session_state['loc'] = None
-st.title('Welcome to EPW reader')
+st.title('Welcome to EPW Explorer')
 st.header("Upload an EPW weather file to visualise the plots")
 uploaded_epw = st.file_uploader("Upload EPW")
 

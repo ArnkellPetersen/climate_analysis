@@ -2,7 +2,7 @@ from bokeh.plotting import figure, show
 from bokeh.models.mappers import LinearColorMapper, CategoricalColorMapper
 from bokeh.models.tickers import DatetimeTicker
 from bokeh.models.annotations import Label
-from bokeh.models import BoxAnnotation
+from bokeh.models import BoxAnnotation, HoverTool, WheelZoomTool, BoxSelectTool, SaveTool, ResetTool, PanTool, ColumnDataSource, DataRange1d, ColorBar
 from pythermalcomfort.models import utci, solar_gain
 import bokeh.models as bkm
 import numpy as np
