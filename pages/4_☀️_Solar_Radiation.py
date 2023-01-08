@@ -4,7 +4,7 @@ from bokeh_plots.monthly_graph import monthlyGraph
 
 st.set_page_config(
    page_title="EPW Explorer - Solar Radiation",
-   page_icon="🧭",
+   page_icon="☀️",
    layout="wide",
    initial_sidebar_state="expanded",
 )

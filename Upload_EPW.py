@@ -1,14 +1,17 @@
 import streamlit as st
 import pandas as pd
 from io import StringIO
+import os
 
 st.set_page_config(
    page_title="EPW Explorer",
-   page_icon="🧭",
+   page_icon="👓",
    layout="wide",
    initial_sidebar_state="expanded",
 )
 
+epw_files = [file for file in os.listdir('data/')]
+epw_files.insert(0,'None')
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: visible;}
@@ -22,21 +25,26 @@ if 'df' not in st.session_state:
 st.title('Welcome to EPW Explorer')
 st.header("Upload an EPW weather file to visualise the plots")
 uploaded_epw = st.file_uploader("Upload EPW")
+st.header("Or select an EPW from the list below")
+epw_sel = st.selectbox('Select EPW', epw_files)
+
+col_names = ['Year','Month','Day','Hour','Seconds','Datasource','DB','DP','RH','AtmPressure','ExtHorzRad','ExtDirRad','HorzIRSky', 'GloHorzRad', 'DirNormRad','DifHorzRad','GloHorzIllum','DirNormIllum','DifHorzIllum','ZenLum','WindDir','WindSpd','TotSkyCvr','OpaqSkyCvr','Visibility','CeilingHgt','PresWeathObs,PresWeathCodes','PrecipWtr','AerosolOptDepth','SnowDepth','DaysLastSnow','Albedo','Rain','RainQuantity','-']
 
 if uploaded_epw is not None:
-   col_names = ['Year','Month','Day','Hour','Seconds','Datasource','DB','DP','RH','AtmPressure','ExtHorzRad','ExtDirRad','HorzIRSky', 'GloHorzRad', 'DirNormRad','DifHorzRad','GloHorzIllum','DirNormIllum','DifHorzIllum','ZenLum','WindDir','WindSpd','TotSkyCvr','OpaqSkyCvr','Visibility','CeilingHgt','PresWeathObs,PresWeathCodes','PrecipWtr','AerosolOptDepth','SnowDepth','DaysLastSnow','Albedo','Rain','RainQuantity','-']
    df=pd.read_csv(uploaded_epw,names=col_names, skiprows=8)
+   stringio = StringIO(uploaded_epw.getvalue().decode("utf-8"))
+   string_data = stringio.read()
+   loc_str = ''.join(string_data[:100])
+   st.session_state['loc'] = loc_str.split(',')[1]
+elif epw_sel is not 'None':
+   df=pd.read_csv('data/'+epw_sel,names=col_names, skiprows=8)
+   st.session_state['loc'] = epw_sel
+if uploaded_epw is not None or epw_sel is not 'None':
    df.loc[(df['Year'] > 1000,'Year')] = 2000
    dates=df[["Year","Month","Day","Hour"]]
    df['dates']=pd.to_datetime(dates)
    df['day'] = (df.index+1)
    st.session_state['df'] = df
-
-   bytes_data = uploaded_epw.getvalue()
-   stringio = StringIO(uploaded_epw.getvalue().decode("utf-8"))
-   string_data = stringio.read()
-   loc_str = ''.join(string_data[:100])
-   st.session_state['loc'] = loc_str.split(',')[1]
 
 if st.session_state['df'] is not None:
    df = st.session_state['df']

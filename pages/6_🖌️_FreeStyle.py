@@ -6,7 +6,7 @@ from bokeh_plots.line_graph import lineGraph
 
 st.set_page_config(
    page_title="EPW Explorer - Free Style",
-   page_icon="🧭",
+   page_icon="🖌️",
    layout="wide",
    initial_sidebar_state="expanded",
 )
