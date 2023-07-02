@@ -9,7 +9,7 @@ from bokeh_plots.histo2D import histo2D
 from bokeh_plots.utciHeatmap import utciHeatmap
 
 st.set_page_config(
-   page_title="EPW Explorer",
+   page_title="EPW Analysis Tool",
    page_icon="👓",
    layout="wide",
    initial_sidebar_state="expanded",
