@@ -36,7 +36,7 @@ if 'df' not in st.session_state:
 col1, col2, col3 = st.columns([0.1,0.8,0.1])
 
 with col2:  
-    st.title('Welcome to EPW Analysis Tool')
+    st.title('Welcome to the EPW Analysis Tool')
 
     col1_epw, col2_epw = st.columns(2)
     with col1_epw:
