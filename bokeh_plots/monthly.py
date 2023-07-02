@@ -11,8 +11,6 @@ units = ["YYYY","MM","DD","HH","s","","°C","°C","%","Pa","Wh/m2","Wh/m2","Wh/m
 
 def monthly(df,variable):
     #initiate bokeh figure and tools
-        
-    variable = variable
     vars_unit = units[col_names.index(variable)]
 
     #initiate bokeh figure and tools
@@ -71,7 +69,7 @@ def monthly(df,variable):
     source3=ColumnDataSource(data=newdf)
 
     #adjust left axis
-    f3.y_range=Range1d(start=newdf['low'].min()-2, end=newdf['high'].max()+2)
+    f3.y_range=Range1d(start=newdf['low'].min()-(max(newdf['high'])*0.1), end=newdf['high'].max()+(max(newdf['high'])*0.1))
 
     #add low line
     g1 = bkm.Line(x='dates', y='low',line_color='blue',line_alpha=0.5,line_width=3)
